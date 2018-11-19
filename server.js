@@ -1,6 +1,8 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
+const moment = require("moment");
+moment().format();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
