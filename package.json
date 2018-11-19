@@ -1,0 +1,20 @@
+{
+  "name": "timestamp-microservice",
+  "version": "1.0.0",
+  "description": "time stamp micorservice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jbone187/timestamp-microservice.git"
+  },
+  "author": "Jasen Green",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jbone187/timestamp-microservice/issues"
+  },
+  "homepage": "https://github.com/Jbone187/timestamp-microservice#readme"
+}
