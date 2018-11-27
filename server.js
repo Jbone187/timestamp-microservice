@@ -1,21 +1,27 @@
 const express = require("express");
 const app = express();
 const moment = require("moment");
-moment().format();
 
 app.use(express.static("public"));
 
-app.get("/:id", function(req, res) {
-  console.log(req.params.id);
+app.get("/:query", function(req, res) {
+  const urlString = moment.unix(req.params.query);
+  const validate = urlString.isValid();
+  const naturalDate = moment(urlString).format("MMMM Do YYYY");
+  const unixDate = moment(req.params.query, "MMMM D, YYYY").format("X");
 
-  let urlString = JSON.stringify(moment.unix(req.params.id));
-
-  console.log(urlString);
-  if (urlString === null) {
-    res.json("Good Bye");
+  if (validate) {
+    res.json({
+      unix: req.params.query,
+      natural: naturalDate
+    });
   } else {
-    res.json(urlString);
+    res.json({
+      unix: unixDate,
+      natural: req.params.query
+    });
   }
+  console.log(validate);
 });
 
 app.listen(3000, function() {
