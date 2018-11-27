@@ -5,8 +5,17 @@ moment().format();
 
 //app.use(express.static("public"));
 
-app.get("/", function(req, res) {
-  res.json(moment());
+app.get("/:id", function(req, res) {
+  console.log(req.params.id);
+
+  let urlString = JSON.stringify(moment.unix(req.params.id));
+
+  console.log(urlString);
+  if (urlString === null) {
+    res.json("Good Bye");
+  } else {
+    res.json(urlString);
+  }
 });
 
 app.listen(3000, function() {
