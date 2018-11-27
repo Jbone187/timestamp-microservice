@@ -3,7 +3,7 @@ const app = express();
 const moment = require("moment");
 moment().format();
 
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 app.get("/:id", function(req, res) {
   console.log(req.params.id);
