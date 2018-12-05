@@ -24,5 +24,5 @@ app.get("/:query", function(req, res) {
 });
 
 app.listen(3000, function() {
-  console.log("Node is Running Microservice");
+  console.log("Node is running Microservice");
 });
