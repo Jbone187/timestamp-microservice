@@ -20,8 +20,7 @@ app.get("/:query", function(req, res) {
       unix: unixDate,
       natural: req.params.query
     });
-  }
-  console.log(validate);
+  };
 });
 
 app.listen(3000, function() {
