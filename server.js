@@ -1,17 +1,28 @@
-const bodyParser = require("body-parser");
 const express = require("express");
 const app = express();
 const moment = require("moment");
-moment().format();
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 app.use(express.static("public"));
-
-app.post("/", function(req, res) {
-  //add request
+//Unix and Natural date formation
+app.get("/:query", function(req, res) {
+  const urlString = moment.unix(req.params.query);
+  const validate = urlString.isValid();
+  const naturalDate = moment(urlString).format("MMMM Do YYYY");
+  const unixDate = moment(req.params.query, "MMMM D, YYYY").format("X");
+//Checking validation
+  if (validate) {
+    res.json({
+      unix: req.params.query,
+      natural: naturalDate
+    });
+  } else {
+    res.json({
+      unix: unixDate,
+      natural: req.params.query
+    });
+  };
 });
 
 app.listen(3000, function() {
-  console.log("Node is Running on port 3000");
+  console.log("Node is running Microservice");
 });
